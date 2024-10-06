@@ -1,4 +1,3 @@
-/* Reset some basic styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -85,12 +84,6 @@ body {
   max-width: 100%;
 }
 
-
-/* Tabel of UserDetail */
-/* src/styles.css */
-
-/* Existing styles... */
-
 /* User Detail Styles */
 .user-detail {
   background-color: white;
@@ -159,33 +152,20 @@ body {
   text-decoration: underline;
 }
 
-/* Responsive Table */
-@media (max-width: 768px) {
-  .detail-table th, .detail-table td {
-    padding: 8px;
-  }
-
-  .user-detail {
-    padding: 15px 20px;
-  }
-
-  .user-detail h2 {
-    font-size: 1.5rem;
-  }
-}
-
-
-/* Table Styles */
+/* User Table Styles */
 .user-table {
   width: 100%;
   border-collapse: collapse;
   background-color: white;
+  overflow-x: auto; /* Added to allow horizontal scrolling on small screens */
 }
 
-.user-table th, .user-table td {
+.user-table th,
+.user-table td {
   padding: 12px 15px;
   border: 1px solid #ddd;
   text-align: left;
+  white-space: nowrap; /* Prevent text from wrapping */
 }
 
 .user-table th {
@@ -214,7 +194,8 @@ body {
 }
 
 /* Action Buttons */
-.edit-button, .delete-button {
+.edit-button,
+.delete-button {
   background: none;
   border: none;
   cursor: pointer;
@@ -363,52 +344,6 @@ body {
   background-color: #757575;
 }
 
-/* User Detail */
-.user-detail {
-  background-color: white;
-  padding: 20px 30px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  color: #1976d2;
-  text-decoration: none;
-  margin-bottom: 20px;
-}
-
-.back-link svg {
-  margin-right: 5px;
-}
-
-.back-link:hover {
-  text-decoration: underline;
-}
-
-.detail-section {
-  margin-bottom: 20px;
-}
-
-.detail-section h3 {
-  margin-bottom: 10px;
-  color: #1976d2;
-}
-
-.detail-section p {
-  margin-bottom: 5px;
-}
-
-.detail-section a {
-  color: #1976d2;
-  text-decoration: none;
-}
-
-.detail-section a:hover {
-  text-decoration: underline;
-}
-
 /* Loading Spinner */
 .loading-spinner {
   display: flex;
@@ -432,8 +367,43 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .user-table th, .user-table td {
+  .user-table {
+    display: block; /* Allow the table to behave like a block element */
+    overflow-x: auto; /* Enable horizontal scrolling */
+  }
+
+  .user-table th,
+  .user-table td {
     padding: 8px 10px;
+    display: block; /* Stack cells vertically */
+    text-align: right; /* Align text to the right for readability */
+    position: relative; /* Position relative for pseudo elements */
+  }
+
+  .user-table th {
+    display: none; /* Hide the header in mobile view */
+  }
+
+  .user-table tr {
+    margin-bottom: 15px; /* Add space between rows */
+  }
+
+  .user-table td:before {
+    content: attr(data-label); /* Use the 'data-label' attribute for headers */
+    position: absolute;
+    left: 10px;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  /* Adjust styles for action buttons */
+  .edit-button,
+  .delete-button {
+    font-size: 0.8rem; /* Reduce button size for mobile */
+  }
+
+  .user-table th, .user-table td {
+    padding: 8px;
   }
 
   .top-bar {
